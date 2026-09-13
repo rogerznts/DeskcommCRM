@@ -283,7 +283,7 @@ npm install -g pnpm && pnpm install
 
 cp .env.example .env.local  # guía completa en docs/SETUP.md
 
-docker compose up -d        # WAHA local (opcional en dev sin WhatsApp)
+docker compose --env-file .env.local up -d   # WAHA + Redis + worker (opcional en dev sin WhatsApp)
 
 # Schema: aplica el baseline, NO las migrations.
 # Las migrations 0001-0009 y 0013 son stubs `SELECT 1;` — la cadena no sube desde cero.

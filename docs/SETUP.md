@@ -251,8 +251,10 @@ WAHA_WEBHOOK_BASE_URL=https://abc-123-456.ngrok-free.app
 ### Passo 5 — subir o WAHA
 
 ```bash
-docker compose up -d
+docker compose --env-file .env.local up -d
 ```
+
+> O `--env-file .env.local` é obrigatório: o Compose só interpola `${...}` a partir do `.env`, e sem a flag o WAHA sobe com `WAHA_API_KEY_SHA512` e `WAHA_HMAC_SECRET` vazios. O mesmo comando sobe Redis local (`serverless-redis-http` em `:8079`, token em `SRH_TOKEN`) e o worker.
 
 Confira em <http://localhost:3030/dashboard/> que o WAHA está respondendo (painel do WAHA). Pra criar sessão e escanear QR, veja a doc oficial: <https://waha.devlikeapro.com/docs/overview/quick-start/>.
 
